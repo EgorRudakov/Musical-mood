@@ -1,0 +1,35 @@
+.footer {
+	grid-area: 3 / 1 / 4 / 3;
+	border-radius: 15px;
+	background-color: $body-bg;
+}
+
+.footer__container {
+	height: 100%;
+	margin: 0 auto;
+}
+
+.player {
+	padding: 8px 10px;
+	width: 100%;
+	height: 100%;
+}
+.player-controls {
+	height: 100%;
+
+	&__item {
+		      display: inline-flex;
+      font-size: 30px;
+      padding: 5px;
+      margin-bottom: 10px;
+      color: #acb8cc;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+	}
+
+}

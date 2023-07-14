@@ -1,0 +1,110 @@
+.sidebar {
+	grid-area: aside;
+	grid-area: 1 / 1 / 3 / 2;
+}
+
+.sidebar__container {
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 0.5fr 1fr;
+	row-gap: 8px;
+	height: 100%;
+	background-color: #444b53;
+	position: relative;
+
+	#btn-menu {
+		// display: none;
+		position: absolute;
+		left: 90%;
+		top: 0;
+		height: 3.125rem;
+		width: 3.125rem;
+		line-height: 3.125rem;
+		font-size: 1.25rem;
+		text-align: center;
+		transform: translateX(-50%);
+		color: $white;
+	}
+}
+
+.logo {
+	background-color: $body-bg;
+	
+	height: 5.625rem;
+	padding: 5px 12px;
+	border-radius: 15px;
+
+	&__link {
+		display: inline-block;
+		height: 100%;
+	}
+
+	&__link svg {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.menu {
+}
+
+.menu__search {
+	grid-area: 1 / 1 / 2 / 2;
+	padding: 8px 10px;
+	border-radius: 15px;
+	background-color: $body-bg;
+}
+.menu__list {
+	// margin-top: 3.4375rem;
+	margin: 0;
+	padding: 8px 10px;
+}
+
+.menu__item {
+	height: 3.125rem;
+	line-height: 3.125rem;
+	padding: 4px 10px;
+	margin: 0;
+}
+
+.menu__link,
+.menu__button {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	border: none;
+	gap: 0.3125rem;
+	transition: 0.5s;
+
+	color: $textMenu;
+
+	&:active {
+		color: $white;
+	}
+
+	&:hover {
+		color: $white;
+	}
+}
+
+.menu__button {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: inherit;
+}
+.link__text {
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-size: 1rem;
+}
+
+.menu-playlist {
+	grid-area: 2 / 1 / 3 / 2;
+	border-radius: 15px;
+	margin: 0;
+	padding: 8px 10px;
+	background-color: $body-bg;
+}
