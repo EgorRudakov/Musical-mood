@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<svg display="none">
-			<symbol id="skip-back" viewBox="0 0 30 30">
+			<symbol id="icon-prev" viewBox="0 0 30 30">
 				<path
 					d="M11.3258 15.8437C10.7083 15.4507 10.7083 14.5493 11.3258 14.1564L22.2131 7.22802C22.8789 6.80438 23.75 7.2826 23.75 8.07169V21.9283C23.75 22.7174 22.8788 23.1956 22.2131 22.772L11.3258 15.8437Z"
 				/>
@@ -19,7 +19,7 @@
 				/>
 			</symbol>
 
-			<symbol id="repeat" viewBox="0 0 20 20">
+			<symbol id="icon-repeat" viewBox="0 0 20 20">
 				<path
 					d="M17.8101 5.17791C18.4368 4.78625 18.4368 3.87358 17.8101 3.48192L14.0302 1.1195C13.3642 0.703218 12.5002 1.18206 12.5002 1.9675V6.69233C12.5002 7.47777 13.3642 7.95661 14.0302 7.54033L17.8101 5.17791Z"
 				/>
@@ -42,19 +42,19 @@
 				/>
 			</symbol>
 
-			<symbol id="pause" viewBox="0 0 30 30">
+			<symbol id="icon-pause" viewBox="0 0 30 30">
 				<rect x="5" y="3.75" width="7.5" height="22.5" rx="2" />
 				<rect x="17.5" y="3.75" width="7.5" height="22.5" rx="2" />
 			</symbol>
 
-			<symbol id="skip-fwd" viewBox="0 0 30 30">
+			<symbol id="icon-next" viewBox="0 0 30 30">
 				<path
 					d="M18.6742 15.8437C19.2917 15.4507 19.2917 14.5493 18.6742 14.1564L7.78687 7.22802C7.12115 6.80438 6.25 7.2826 6.25 8.07169V21.9283C6.25 22.7174 7.12115 23.1956 7.78688 22.772L18.6742 15.8437Z"
 				/>
 				<rect x="21.25" y="6.25" width="2.5" height="17.5" rx="1" />
 			</symbol>
 
-			<symbol id="shuffle" viewBox="0 0 20 20">
+			<symbol id="icon-shuffle" viewBox="0 0 20 20">
 				<path
 					d="M13.3335 15C12.0192 15 10.7889 14.4855 9.8761 13.6122"
 					stroke="white"
@@ -84,7 +84,7 @@
 				/>
 			</symbol>
 
-			<symbol id="favorite" viewBox="0 0 19 17">
+			<symbol id="icon-like" viewBox="0 0 19 17">
 				<path
 					d="M4.15465 9.68115L9.36911 14.5796L9.36913 14.5796C9.46753 14.672 9.51673 14.7183 9.56716 14.7473C9.7216 14.8362 9.9117 14.8362 10.0661 14.7473C10.1166 14.7183 10.1658 14.672 10.2642 14.5796L10.2642 14.5796L15.4786 9.68116C16.9458 8.30294 17.1239 6.03495 15.89 4.44455L15.658 4.14551C14.1819 2.24294 11.2189 2.56201 10.1816 4.73524C10.0351 5.04222 9.59816 5.04222 9.45165 4.73524C8.41443 2.56201 5.45144 2.24293 3.97531 4.14551L3.74329 4.44455C2.50936 6.03495 2.68752 8.30294 4.15465 9.68115Z"
 					fill-opacity="0.4"
@@ -96,7 +96,7 @@
 				/>
 			</symbol>
 
-			<symbol id="volume-down" viewBox="0 0 20 20">
+			<symbol id="icon-volume" viewBox="0 0 20 20">
 				<path
 					d="M10.9188 2.79614C11.5806 2.32337 12.5 2.7965 12.5 3.60987V16.3902C12.5 17.2035 11.5806 17.6767 10.9188 17.2039L6.66667 14.1667H4.5C3.39543 14.1667 2.5 13.2712 2.5 12.1667V7.83335C2.5 6.72878 3.39543 5.83335 4.5 5.83335H6.66667L10.9188 2.79614Z"
 				/>
@@ -172,19 +172,66 @@
 
 			<main class="main">
 				<div class="main__container">
-					
 					<section class="main__content">
 						<h1 class="main__title">Music</h1>
-						<div class="main__item"></div>
 					</section>
 				</div>
 			</main>
 
 			<footer class="footer">
 				<nav class="player">
-					<ul class="player-controls">
-						<li class="player-controls__item"></li>
-					</ul>
+					<div class="player__controls">
+						<button class="player__button player__button--prev">
+							<svg class="icon">
+								<use href="#icon-prev"></use>
+							</svg>
+						</button>
+						<button class="player__button player__button--play">
+							<svg class="icon">
+								<use href="#icon-pause"></use>
+							</svg>
+						</button>
+						<button class="player__button player__button--next">
+							<svg class="icon">
+								<use href="#icon-next"></use>
+							</svg>
+						</button>
+					</div>
+					<div class="player__volume">
+						<button class="player__button player__button--volume">
+							<svg class="icon">
+								<use href="#icon-volume"></use>
+							</svg>
+						</button>
+					</div>
+					<div class="player__info">
+						<img src="" alt="Track Image" class="player__image" />
+						<span class="player__track-name">Track name</span>
+					</div>
+					<div class="player__options">
+						<button class="player__button player__button--like">
+							<svg class="icon">
+								<use href="#icon-like"></use>
+							</svg>
+						</button>
+						<button class="player__button player__button--shuffle">
+							<svg class="icon">
+								<use href="#icon-shuffle"></use>
+							</svg>
+						</button>
+					</div>
+					<div class="player__time">
+						<span class="player__current-time">0:00</span>
+						<input class="player__seek-bar" type="range" value="0" />
+						<span class="player__duration">3:30</span>
+					</div>
+					<div class="player__repeat">
+						<button class="player__button player__button--repeat">
+							<svg class="icon">
+								<use href="#icon-repeat"></use>
+							</svg>
+						</button>
+					</div>
 				</nav>
 			</footer>
 		</div>

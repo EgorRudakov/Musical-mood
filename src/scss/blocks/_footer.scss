@@ -33,3 +33,15 @@
 	}
 
 }
+
+
+.player {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.player__button {
+	padding: 0;
+	border: none;
+	background-color: $body-bg;
+}

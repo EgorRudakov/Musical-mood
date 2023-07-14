@@ -30,6 +30,13 @@ img {
 	max-width: 100%;
 }
 
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
 body {
 	height: 100vh;
 	font-family: "Roboto", sans-serif;
