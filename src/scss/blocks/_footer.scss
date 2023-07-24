@@ -2,46 +2,131 @@
 	grid-area: 3 / 1 / 4 / 3;
 	border-radius: 15px;
 	background-color: $body-bg;
-}
-
-.footer__container {
-	height: 100%;
-	margin: 0 auto;
+	padding: 1rem 1rem;
+	overflow: hidden;
 }
 
 .player {
-	padding: 8px 10px;
-	width: 100%;
-	height: 100%;
-}
-.player-controls {
-	height: 100%;
+	display: grid;
+	grid-template-columns:
+		12.625rem 2.25rem minmax(6.625rem, 0.5fr)
+		2.25rem 2.25rem minmax(28.19rem, auto) 2.25rem;
+	grid-template-rows: 58px;
+	align-items: center;
 
-	&__item {
-		      display: inline-flex;
-      font-size: 30px;
-      padding: 5px;
-      margin-bottom: 10px;
-      color: #acb8cc;
-      cursor: pointer;
-      width: 50px;
-      height: 50px;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      transition: all 0.3s ease-in-out;
+	&__controls {
+		grid-area: 1 / 1 / 2 / 2;
+		display: flex;
+		align-items: center;
+		gap: 11px;
+		padding: 8px;
 	}
 
+	&__button {
+		margin: 0;
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		padding: 5px;
+		background-color: $body-bg;
+	}
+
+	&__button--volume {
+		grid-area: 1 / 2 / 2 / 3;
+	}
+
+	&__info {
+		grid-area: 1 / 3 / 2 / 4;
+		display: grid;
+		grid-template-columns: 2.8125rem auto;
+		grid-template-rows: auto auto;
+		column-gap: 0.44rem;
+		align-items: center;
+		justify-items: stretch;
+		padding: 5px 5px;
+		overflow: hidden;
+	}
+
+	&__image {
+		grid-area: 1 / 1 / 3 / 2;
+		width: 2.8125rem;
+		height: 2.8125rem;
+		background-position: center;
+		background-size: cover;
+	}
+
+	&__title-song {
+		grid-area: 1 / 2 / 2 / 3;
+		color: #fff;
+		font-size: 0.9375rem;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		text-overflow: ellipsis;
+	}
+
+	&__title-performer {
+		grid-area: 2 / 2 / 3 / 3;
+		color: #c4c4c4;
+		font-size: .6rem;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+		letter-spacing: 1px;
+		text-overflow: ellipsis;
+	}
+
+	&__button--like {
+		grid-area: 1 / 4 / 2 / 5;
+	}
+	&__button--shuffle {
+		grid-area: 1 / 5 / 2 / 6;
+	}
+
+	&__time {
+		grid-area: 1 / 6 / 2 / 7;
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	&__output-power {
+		display: none;
+		position: absolute;
+		bottom: 17px;
+		left: 13px;
+		padding: 2px 7px;
+		background-color: #ff7300;
+		border-radius: 10px 10px 0 10px;
+	}
+
+	&__seek-bar {
+		-webkit-appearance: none;
+		width: 40vh;
+		height: 0.2rem;
+		background-color: rgba(255, 255, 255, 0.31);
+		outline: none;
+		border-radius: 15px;
+		cursor: pointer;
+	}
+
+	&__seek-bar::-webkit-slider-thumb {
+		position: relative;
+		-webkit-appearance: none;
+		width: 0.625rem;
+		height: 0.625rem;
+		border-radius: 50%;
+		background-color: #ff7300;
+		z-index: 2;
+	}
+
+	&__repeat {
+		grid-area: 1 / 7 / 2 / 8;
+	}
 }
 
-
-.player {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
 .player__button {
-	padding: 0;
 	border: none;
-	background-color: $body-bg;
+	cursor: pointer;
 }

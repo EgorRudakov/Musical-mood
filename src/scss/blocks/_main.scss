@@ -1,9 +1,10 @@
 .main {
-  grid-area: main;
   grid-area: 2 / 2 / 3 / 3;
+  max-height: 100vh;
   border-radius: 15px;
   background-color: $body-bg;
   color: inherit;
+  overflow-y: auto;
 }
 
 
