@@ -1,0 +1,107 @@
+@mixin coverBg() {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin svgFill() {
+  &:hover {
+    fill: lighten($--bg--primaryHover, 15%);
+  }
+
+  &:active {
+    fill: darken($--bg--primaryHover, 5%);
+  }
+}
+
+@mixin svgStroke() {
+  &:hover {
+    stroke: lighten($--bg--primaryHover, 50%);
+  }
+
+  &:active {
+    stroke: darken($--bg--primaryActive, 5%);
+  }
+}
+
+@mixin svgFillLike() {
+  &:hover {
+    fill: lighten($--bg--strokeLike, 15%);
+  }
+
+  &:active {
+    fill: darken($--bg--strokeLike, 5%);
+  }
+}
+
+@mixin svgStrokeLike() {
+  &:hover {
+    stroke: lighten($--bg--strokeLike, 15%);
+  }
+
+  &:active {
+    stroke: darken($--bg--strokeLike, 60%);
+  }
+}
+
+@mixin svgFillLikeVolume() {
+  &:hover {
+    fill: lighten($--bg--primary, 15%);
+  }
+
+  &:active {
+    fill: darken($--bg--primary, 10%);
+  }
+}
+
+@mixin svgStrokeLikeVolume() {
+  &:hover {
+    stroke: lighten($--bg--primary, 15%);
+  }
+
+  &:active {
+    stroke: darken($--bg--primaryActive, 5%);
+  }
+}
+
+@mixin fluid-text($max: 48, $min: 16) {
+  font-size: clamp(#{$min}px #{$max / 1440 * 100}vw, #{$max}px);
+}
+
+@mixin reset-link {
+  color: inherit;
+
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin reset-button {
+  padding: 0;
+  background-color: inherit;
+  border: none;
+}
+
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin square($size) {
+  width: $size;
+  aspect-ratio: 1;
+}

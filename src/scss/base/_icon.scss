@@ -1,51 +1,76 @@
 .bx {
-	height: 3.125rem;
-	font-size: 1.25rem;
-	line-height: 3.125rem;
-	text-align: center;
-	color: inherit;
+  height: 3.125rem;
+  font-size: 1.25rem;
+  line-height: 3.125rem;
+  text-align: center;
+  color: inherit;
 }
 
 .bx-search:hover {
-	color: $white;
+  color: $white;
 }
 
-.icons {
-	fill: #fff;
-	width: 20px;
-	height: 20px;
+svg {
+  display: flex;
+  align-items: center;
 }
 
-.player__icon {
-	&--prev,
-	&--play,
-	&--pause,
-	&--next {
-		width: 30px;
-		height: 30px;
-	}
-
-	&--prev:hover,
-	&--play:hover,
-	&--pause:hover,
-	&--next:hover,
-	&--like:hover,
-	&--shuffle:hover,
-	&--repeat:hover {
-		opacity: .6;
-	}
-
-	&--volume {
-		fill: white;
-		fill-opacity: .6;
-		width: 20px;
-		height: 20px;
-	}
-
-	&--volume:hover {
-		fill: #ffff;
-		fill-opacity: 4;
-	}
-
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  stroke-width: 0;
+  stroke: #fff;
+  fill: #fff;
 }
 
+.icon {
+  &__prev,
+  &__pause,
+  &__play,
+  &__next {
+    width: 30px;
+    height: 30px;
+    fill: $--bg--primary;
+    stroke: $--bg--primary;
+    @include svgFill;
+    @include svgStroke;
+  }
+
+  &__favorite {
+    width: 20px;
+    height: 20px;
+    fill: $--bg--primary;
+    stroke: $--bg--primary;
+    @include svgFillLike;
+    @include svgStrokeLike;
+  }
+
+  &__volume--opacity {
+    width: 20px;
+    height: 20px;
+    fill: $--bg--primary;
+    fill-opacity: 0.5;
+    @include svgFillLikeVolume;
+    @include svgStrokeLikeVolume;
+  }
+
+  &__shuffle,
+  &__repeat {
+    width: 20px;
+    height: 20px;
+    fill: $--bg--primary;
+    stroke: $--bg--primary;
+    @include svgFill;
+    @include svgStroke;
+  }
+}
+
+// svg {
+// 	cursor: pointer;
+
+// 	&:not(.icon) {
+// 		@include svgFill;
+// 		@include svgStroke;
+// 	}
+// }

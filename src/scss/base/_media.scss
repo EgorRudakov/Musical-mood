@@ -1,0 +1,54 @@
+$desktop-above: 1281px;
+$desktop: 1280px;
+
+$tablet-above: 1024px;
+$tablet: 1023px;
+
+$mobile-above: 768px;
+$mobile: 767px;
+
+// @media desktop-above {
+//   @media (min-width: $desktop-above) {
+//     @content;
+//   }
+// }
+// @media desktop {
+//   @media (max-width: $desktop) {
+//     @content;
+//   }
+// }
+
+// @media tablet-above {
+//   @media (min-width: $tablet-above) {
+//     @content;
+//   }
+// }
+// @media tablet {
+//   @media (max-width: $tablet) {
+//     @content;
+//   }
+// }
+
+// @media mobile-above {
+//   @media (min-width: $mobile-above) {
+//     @content;
+//   }
+// }
+// @media mobile {
+//   @media (max-width: $mobile) {
+//     @content;
+//   }
+// }
+
+// @media hover {
+//   @media (hover: hover) {
+//     &:hover {
+//       @content;
+//     }
+//   }
+//   @media (hover: none) {
+//     &:active {
+//       @content;
+//     }
+//   }
+// }

@@ -1,0 +1,21 @@
+//Icon
+@import 'https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css';
+
+//Swiper
+// @import 'swiper/scss';
+
+// Base
+@import './base/normalize.scss';
+@import './base/fonts.scss';
+@import './base/mixin.scss';
+@import './base/media.scss';
+@import './base/variables.scss';
+@import './base//utils.scss';
+@import './base/globals.scss';
+@import './base/icon.scss';
+
+//Blocks
+@import './blocks/header.scss';
+@import './blocks/sidebar.scss';
+@import './blocks/main.scss';
+@import './blocks/footer.scss';

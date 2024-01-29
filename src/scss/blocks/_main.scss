@@ -1,54 +1,206 @@
 .main {
-  grid-area: 2 / 2 / 3 / 3;
+  grid-area: main;
   max-height: 100vh;
   border-radius: 15px;
   background-color: $body-bg;
   color: inherit;
   overflow-y: auto;
+  &__container {
+    padding: 15px 13px 15px 77px;
+  }
 }
 
-
-
-
-.main__container{
-  margin: 0 13px 0 77px;
+.audio-popular {
+  margin-bottom: 40px;
 }
 
-.a {
-  border: 1px #fff solid;
-  max-width: 455px;
-  max-height: 53px;
+.audio__title {
+  margin-bottom: 17px;
 }
 
+/* ------------------------------------ общий БЭМ блок -------------------- */
+.bem-title-audio {
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  color: #fff;
+}
 
+.bem-title-audio:has(span) span {
+  color: #c4c4c4;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: normal;
+}
 
-// .main__content {
-//   height: 100%;
-//   padding: 0 .9375rem;
-//   // background-color: $white;
-//   color: #000;
+.audio-slider {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  // border: 2px solid #0cde39;
+}
+
+.audio-slider__wrapper {
+  // border: 2px solid #e60505;
+  // width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(4, auto);
+  grid-auto-flow: column;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.audio-slider__slide {
+  max-width: 690px;
+}
+
+.audio-slider {
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    max-width: 690px;
+    // width: 100%;
+    padding: 0 10px;
+    border: solid 1px #444b53;
+    border-radius: 15px;
+    background-color: #2a2c39;
+    overflow: hidden;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__button {
+    height: 35px;
+    width: 35px;
+  }
+}
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+  padding: 5px 0;
+
+  &__track-image {
+    min-width: 42px;
+    height: 42px;
+  }
+
+  &__performer-title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__track-name {
+    width: 250px;
+    align-self: flex-start;
+    height: 100%;
+    font-size: 12px;
+    color: #fff;
+  }
+  &__track-artist {
+    height: 100%;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+  }
+  &__track-time {
+    color: #94959c;
+    font-size: 10px;
+    font-style: normal;
+    line-height: normal;
+  }
+}
+
+.info__track-name,
+.info__track-artist,
+.info__track-time {
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.button-show-similar {
+  &__icon {
+  }
+}
+.button-add-to-my-music {
+  &__icon {
+  }
+}
+.button-menu {
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__list {
+  }
+}
+
+// .swiper-slide {
+//   height: calc((100% - 30px) / 2);
+//   // overflow: hidden;
 // }
 
-// @media (min-width: 35.9375rem) {
-//   .main__content {
-//     padding: 0 calc(50vw - 16.875rem);
-//   }
+// .swiper-pagination-bullet {
+//   width: 20px;
+//   height: 20px;
+//   line-height: 20;
+//   font-size: 14px;
+//   background-color: #fff;
 // }
 
-// @media (min-width: 47.9375rem) {
-//   .main__content {
-//     padding: 0 calc(50vw - 22.5rem);
-//   }
-// }
+/* --------------------------------------------------------Top Albums---------------------------------------------------------------------------- */
 
-// @media (min-width: 61.9375rem) {
-//   .main__content {
-//     padding: 0 calc(50vw - 30rem);
-//   }
-// }
+.top-albums {
+  &__title {
+  }
+}
 
-// @media (min-width: 1199.98px) {
-//   .main__content {
-//     padding: 0 calc(50vw - 36.875rem);
-//   }
-// }
+.top-albums-slider {
+  &__wrapper {
+  }
+
+  &__slade {
+  }
+
+  &__item {
+  }
+}
+.swiper {
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+}
+.top-album-slider {
+  &__info {
+  }
+}
+.info-top-album {
+  &__button-icon-play {
+  }
+
+  &__icon {
+  }
+
+  &__performer {
+  }
+
+  &__album-name {
+  }
+
+  &__musician-name {
+  }
+}
