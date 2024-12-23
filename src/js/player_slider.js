@@ -1,12 +1,5 @@
 import data from './data.js';
 
-// const data = {
-//   seekBar: document.querySelector(".track-controls__seek-bar"),
-//   outputPower: document.querySelector(".track-controls__output-power"),
-//   volSeekBar: document.querySelector(".volume__seek-bar"),
-//   volOutputPower: document.querySelector(".volume__output-power"),
-// };
-
 // Добавляет обработчики событий к элементам seekBar и outputPower
 function addEventListeners(seekBar, outputPower) {
   seekBar.addEventListener('mouseover', () => {
