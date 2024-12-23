@@ -3,7 +3,7 @@
 /**
   Нормализация блочной модели
  */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 *,
 *::before,
 *::after {
@@ -144,29 +144,29 @@ svg * {
   }
 }
 @font-face {
-  font-family: "Roboto";
-  src: url(/src/fonts/Roboto-Regular.woff2) format("woff2");
+  font-family: 'Roboto';
+  src: url(../../fonts/Roboto-Regular.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Roboto";
-  src: url(/src/fonts/Roboto-Medium.woff2) format("woff2");
+  font-family: 'Roboto';
+  src: url(../../fonts/Roboto-Medium.woff2) format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Roboto";
-  src: url(/src/fonts/Roboto-Bold.woff2) format("woff2");
+  font-family: 'Roboto';
+  src: url(../../fonts/Roboto-Bold.woff2) format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Roboto";
-  src: url(/src/fonts/Roboto-Black.woff2) format("woff2");
+  font-family: 'Roboto';
+  src: url(../../fonts/Roboto-Black.woff2) format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -174,7 +174,7 @@ svg * {
 body {
   min-height: 100vh;
   min-width: 100vw;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.4;
@@ -216,7 +216,7 @@ button {
   display: grid;
   grid-template-columns: 15.625rem 1fr;
   grid-template-rows: 90px 1fr 90px;
-  grid-template-areas: "sidebar top-bar" "sidebar main" "footer footer";
+  grid-template-areas: 'sidebar top-bar' 'sidebar main' 'footer footer';
   gap: 8px;
   height: 100vh;
   padding: 0.5rem;
@@ -251,22 +251,37 @@ svg {
   fill: #fff;
 }
 
-.icon__prev, .icon__pause, .icon__play, .icon__next {
+.icon__prev,
+.icon__pause,
+.icon__play,
+.icon__next {
   width: 30px;
   height: 30px;
   fill: rgb(255, 255, 255);
   stroke: rgb(255, 255, 255);
 }
-.icon__prev:hover, .icon__pause:hover, .icon__play:hover, .icon__next:hover {
+.icon__prev:hover,
+.icon__pause:hover,
+.icon__play:hover,
+.icon__next:hover {
   fill: #7d7e87;
 }
-.icon__prev:active, .icon__pause:active, .icon__play:active, .icon__next:active {
+.icon__prev:active,
+.icon__pause:active,
+.icon__play:active,
+.icon__next:active {
   fill: #4c4d52;
 }
-.icon__prev:hover, .icon__pause:hover, .icon__play:hover, .icon__next:hover {
+.icon__prev:hover,
+.icon__pause:hover,
+.icon__play:hover,
+.icon__next:hover {
   stroke: #dadadc;
 }
-.icon__prev:active, .icon__pause:active, .icon__play:active, .icon__next:active {
+.icon__prev:active,
+.icon__pause:active,
+.icon__play:active,
+.icon__next:active {
   stroke: #e66800;
 }
 .icon__favorite {
@@ -305,22 +320,27 @@ svg {
 .icon__volume--opacity:active {
   stroke: #e66800;
 }
-.icon__shuffle, .icon__repeat {
+.icon__shuffle,
+.icon__repeat {
   width: 20px;
   height: 20px;
   fill: rgb(255, 255, 255);
   stroke: rgb(255, 255, 255);
 }
-.icon__shuffle:hover, .icon__repeat:hover {
+.icon__shuffle:hover,
+.icon__repeat:hover {
   fill: #7d7e87;
 }
-.icon__shuffle:active, .icon__repeat:active {
+.icon__shuffle:active,
+.icon__repeat:active {
   fill: #4c4d52;
 }
-.icon__shuffle:hover, .icon__repeat:hover {
+.icon__shuffle:hover,
+.icon__repeat:hover {
   stroke: #dadadc;
 }
-.icon__shuffle:active, .icon__repeat:active {
+.icon__shuffle:active,
+.icon__repeat:active {
   stroke: #e66800;
 }
 
@@ -341,7 +361,7 @@ svg {
   justify-items: center;
   align-items: center;
   -moz-column-gap: 5px;
-       column-gap: 5px;
+  column-gap: 5px;
 }
 .page-navigation {
   grid-area: 1/1/2/2;
@@ -349,7 +369,8 @@ svg {
   align-items: center;
   gap: 40px;
 }
-.page-navigation__button--back, .page-navigation__button--forwards {
+.page-navigation__button--back,
+.page-navigation__button--forwards {
   width: 30px;
   height: 30px;
   padding: 6px 9px;
@@ -465,7 +486,7 @@ svg {
 }
 
 .link__text {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1rem;
 }
@@ -500,7 +521,7 @@ svg {
 }
 
 /* ------------------------------------ общий БЭМ блок -------------------- */
-.bem-title-audio {
+.title-audio {
   font-size: 25px;
   font-style: normal;
   font-weight: 900;
@@ -508,9 +529,9 @@ svg {
   color: #fff;
 }
 
-.bem-title-audio:has(span) span {
+.title-audio:has(span) span {
   color: #c4c4c4;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 25px;
   font-weight: 500;
   line-height: normal;
@@ -661,10 +682,13 @@ svg {
 
 .player {
   display: grid;
-  grid-template-columns: 246px min-content minmax(200px, 400px) repeat(2, auto) repeat(2, min-content) repeat(2, auto) min-content repeat(2, auto);
+  grid-template-columns: 246px min-content minmax(200px, 400px) repeat(2, auto) repeat(
+      2,
+      min-content
+    ) repeat(2, auto) min-content repeat(2, auto);
   align-items: center;
   -moz-column-gap: 16px;
-       column-gap: 16px;
+  column-gap: 16px;
   height: 100%;
   padding: 0 2.875rem 0 1.75rem;
 }
@@ -760,7 +784,7 @@ svg {
   grid-template-rows: auto auto auto;
   align-items: center;
   -moz-column-gap: 0.44rem;
-       column-gap: 0.44rem;
+  column-gap: 0.44rem;
   padding: 20px 0;
   overflow: hidden;
   text-transform: uppercase;
@@ -821,7 +845,7 @@ svg {
   grid-template-columns: min-content 1fr min-content;
   align-items: center;
   -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
+  column-gap: 0.5rem;
   height: 100%;
 }
 .track-controls__output-power {
@@ -835,4 +859,4 @@ svg {
 .repeat {
   grid-area: 1/10/2/11;
   padding: 35px 0;
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */

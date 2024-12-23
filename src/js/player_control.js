@@ -1,9 +1,18 @@
 import data from './data.js';
 
-data.volumeButton.addEventListener('click', () => {
-  data.volumeSlider.classList.toggle('visible');
-  data.volSeekBar.classList.toggle('visible');
-});
+// data.volumeButton.addEventListener('click', () => {
+//   data.volumeSlider.classList.toggle('visible');
+//   data.volSeekBar.classList.toggle('visible');
+// });
+
+if (data.volumeButton) {
+  data.volumeButton.addEventListener('click', () => {
+    data.volumeSliderClass.classList.toggle('visible');
+    data.volSeekBar.classList.toggle('visible');
+  });
+} else {
+  console.error('Volume button not found');
+}
 
 // export async function playTrack(track) {
 //   let audio = new Audio(track);

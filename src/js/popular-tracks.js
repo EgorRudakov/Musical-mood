@@ -1,5 +1,5 @@
-import data from './data.js'
 import { createTrackList, fetchTracks } from './api.js';
+import data from './data.js';
 
 // let trackList;
 
@@ -22,7 +22,7 @@ fetchTracks().then((tracks) => {
 											/>
 									</button>
 									<div class="info__performer-title">
-										<h3 class="info__track-name">${track.track_name}</h3>
+										<h3 class="info__track-name">${track.trackName}</h3>
 										<p class="info__track-artist">${track.artist_id}</p>
 										<span class="info__track-time">${track.trackTime}</span>
 									</div>
@@ -61,18 +61,15 @@ fetchTracks().then((tracks) => {
 								</div>
 							</div>
 						</div>
-`;
+						`;
     })
     .join('');
-
   data.audioSliderWrapper.innerHTML = trackListHTML;
 
   let audio = new Audio();
   let isPlaying = false;
 
-	function ButtonPlayPausePlyer() {
-
-	}
+  function ButtonPlayPausePlyer() {}
 
   function togglePlayPauseIcon(isPlaying) {
     // const controlsButton = document.getElementById('button-play-pause');
@@ -94,9 +91,9 @@ fetchTracks().then((tracks) => {
   playButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
       const index = event.currentTarget.dataset.index;
-			
+
       if (trackList[index] && trackList[index].trackAudio) {
-				const audio = new Audio(trackList[index].trackAudio);
+        const audio = new Audio(trackList[index].trackAudio);
         createAudioPlayer(audio);
       }
     });

@@ -32,8 +32,10 @@ const createTrackList = (tracks) => {
     const trackList = tracks.map((track) => {
       const trackImage = checkTrackImage(track.image);
       // const playPause = playTrack(track.audio);
+      // console.log(track.name);
       return {
         trackId: track.track_id,
+        album_name: track.album_name,
         trackName: track.name,
         artistName: track.artist_name,
         trackImage: trackImage,
@@ -47,6 +49,7 @@ const createTrackList = (tracks) => {
     console.error('No tracks to create a list from');
   }
 };
+
 fetchTracks().then((tracks) => {
   if (tracks) {
     createTrackList(tracks);
@@ -57,8 +60,25 @@ fetchTracks().then((tracks) => {
 
 const checkTrackImage = (trackImage) => {
   const defaultImage = '/public/images/cover-track/3.jpg';
-  console.log(1);
   return trackImage ? trackImage : defaultImage;
 };
+
+async function formatTrackTime(trackTimeInSeconds) {
+  const hours = Math.floor(trackTimeInSeconds / 3600);
+  const minutes = Math.floor((trackTimeInSeconds % 3600) / 60);
+  const seconds = trackTimeInSeconds % 60;
+
+  let formattedTime = '';
+
+  if (hours > 0) {
+    formattedTime += `${hours}:`;
+  }
+
+  formattedTime += `${minutes.toString().padStart(2, '0')}:${seconds
+    .toString()
+    .padStart(2, '0')}`;
+
+  return formattedTime;
+}
 
 export { createTrackList, fetchTracks };

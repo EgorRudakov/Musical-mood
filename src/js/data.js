@@ -3,8 +3,10 @@ function createDataObject(selector) {
   for (let key in selector) {
     if (key === 'infoButtonIconPlay') {
       data[key] = Array.from(document.querySelectorAll(selector[key]));
+    } else {
+      const elements = document.querySelectorAll(selector[key]);
+      data[key] = elements.length === 1 ? elements[0] : elements;
     }
-    data[key] = document.querySelector(selector[key]);
   }
 
   return data;
@@ -16,12 +18,20 @@ const selector = {
   volSeekBar: '.volume__seek-bar',
   volOutputPower: '.volume__output-power',
   volumeButton: '.volume__button',
-  volumeSlider: '.volume__slider',
+  volumeSliderClass: '.volume__slider',
   controlsButton: '.controls__button--play',
   infoButtonIconPlay: '.info__button-icon-play',
   iconPlay: '.icon__play',
   iconPause: '.icon__pause',
   audioSliderWrapper: '.audio-slider__wrapper',
+  previousTrackBtn: '#previous-track',
+  playPauseBtn: '#play-pause',
+  nextTrackBtn: '#next-track',
+  volumeSliderId: '#volume-slider',
+  rewindBackwardBtn: '#rewind-backward',
+  rewindForwardBtn: '#rewind-forward',
 };
 
-export default createDataObject(selector);
+const data = createDataObject(selector);
+
+export default data;

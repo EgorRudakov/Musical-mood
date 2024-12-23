@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#317EFB" />
     <link rel="icon" href="/favicon/favicon.ico" />
     <title>Musical mood</title>
   </head>
@@ -100,8 +101,8 @@
       <!--                            Main                                -->
       <main class="main">
         <div class="main__container">
-          <section class="audio-popular audio">
-            <h1 class="audio__title bem-title-audio">Popular</h1>
+          <section class="popular-musics audio">
+            <h1 class="popular-musics__title titles">Popular</h1>
             <div class="audio-slider swiper">
               <div class="audio-slider__wrapper swiper-wrapper">
                 <!-- <div class="audio-slider__slide swiper-slide">
@@ -164,24 +165,21 @@
             </div>
           </section>
           <section class="top-albums">
-            <h1 class="top-albums__title bem-title-audio">
-              Top <span>Albums</span>
-            </h1>
-            <div class="top-albums__slider slider swiper">
-              <div class="slider__wrapper swiper-wrapper">
-                <div class="slider__slade slade swiper-slide">
-                  <!------------------------------ Top-Albums-slider__item ------------------------------------>
-                  
-<!-- ! --------------------------------------------------Исправить БЭМ Классы --------------- -->
-                  <div class="slade__item top-album-slider">
-                    <div class="slade__info info-top-albums">
-                      <button class="info-top-albums__button-icon-play">
-                        <img
-                          class="info__icon"
-                          src="./src/assets/icon-top-albuns/MMWWTV.png"
-                          alt="Обложка альбома"
-                        />
-                      </button>
+            <h1 class="top-albums__title titles">Top <span>Albums</span></h1>
+            <div class="top-albums-slider swiper">
+              <div class="top-albums-slider__wrapper swiper-wrapper">
+                <div class="top-albums-slider__slades swiper-slide">
+                  <div class="top-albums-slider__item">
+                    <div class="card-albums">
+                      <div class="card-albums">
+                        <button class="card-albums__button">
+                          <img
+                            class="card-albums__icon-button"
+                            src="./src/assets/icon-top-albuns/MMWWTV.png"
+                            alt="Обложка альбома"
+                          />
+                        </button>
+                      </div>
                       <div class="info-top-album__performer">
                         <h2 class="info-top-album__album-name">MMWTV</h2>
                         <span class="info-top-album__musician-name">ASAKE</span>
@@ -245,7 +243,7 @@
                     </div>
                   </div>
 
-                  <!-- ---------------------------------------------------------------------------------------- -->
+                  <!-- -------------------------------- -->
                 </div>
               </div>
             </div>
@@ -258,15 +256,13 @@
           <div class="player__controls controls">
             <button
               class="controls__button controls__button--prev button--centered"
+              id="previous-track"
             >
               <svg class="icon__prev" width="18" height="21">
                 <use xlink:href="./src/assets/sprites.svg#prev"></use>
               </svg>
             </button>
-            <button
-              class="controls__button button--centered"
-              id="button-play-pause"
-            >
+            <button class="controls__button button--centered" id="play-pause">
               <svg
                 class="icon__pause"
                 style="display: none"
@@ -281,6 +277,7 @@
             </button>
             <button
               class="controls__button controls__button--next button--centered"
+              id="next-track"
             >
               <svg class="icon__next" width="18" height="21">
                 <use xlink:href="./src/assets/sprites.svg#next"></use>
@@ -307,12 +304,12 @@
               <input
                 class="volume__seek-bar seek-bar"
                 id="volume-slider"
+                type="range"
                 min="0"
                 max="100"
-                step=".01"
-                type="range"
+                step="0.1"
                 name="volume"
-                value="0"
+                value="0.5"
                 onchange="(this.value)"
               />
             </div>

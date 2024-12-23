@@ -2,7 +2,7 @@
   grid-area: main;
   max-height: 100vh;
   border-radius: 15px;
-  background-color: $body-bg;
+  background-color: $--body-bg;
   color: inherit;
   overflow-y: auto;
   &__container {
@@ -10,16 +10,16 @@
   }
 }
 
-.audio-popular {
+.popular-musics {
   margin-bottom: 40px;
-}
 
-.audio__title {
-  margin-bottom: 17px;
+  &__title {
+    margin-bottom: 17px;
+  }
 }
 
 /* ------------------------------------ общий БЭМ блок -------------------- */
-.bem-title-audio {
+.titles {
   font-size: 25px;
   font-style: normal;
   font-weight: 900;
@@ -27,14 +27,10 @@
   color: #fff;
 }
 
-.bem-title-audio:has(span) span {
+.titles:has(span) span {
   color: #c4c4c4;
-  font-family: 'Roboto', sans-serif;
-  font-size: 25px;
-  font-weight: 500;
-  line-height: normal;
 }
-
+//-------------------------------------------------------------------
 .audio-slider {
   width: 100%;
   height: auto;
@@ -69,7 +65,12 @@
     border: solid 1px #444b53;
     border-radius: 15px;
     background-color: #2a2c39;
+    cursor: grab;
     overflow: hidden;
+  }
+
+  &__item:active {
+    cursor: grabbing;
   }
 
   &__actions {
