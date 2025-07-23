@@ -1,84 +1,35 @@
-const fetchTracks = async () => {
-  const requestOptions = {
-    method: 'GET',
-    redirect: 'follow',
-  };
+const clientId = 'c6dbd297';
 
-  const url =
-    'https://api.jamendo.com/v3.0/artists/tracks/?client_id=c6dbd297&format=jsonpretty&order=track_name_desc&name=we+are+fm&album_datebetween=0000-00-00_2012-01-01';
-
+export const fetchTracks = async () => {
   try {
-    const response = await fetch(url, requestOptions);
+    const response = await fetch(
+      `https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=json&limit=10&order=popularity_total&include=musicinfo`
+    );
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    if (!response.ok) throw new Error('API request failed');
 
     const data = await response.json();
 
-    if (data.results && data.results[0]) {
-      return data.results[0].tracks;
-    } else {
-      console.error('Unexpected API response', data);
-    }
-  } catch (error) {
-    console.error('An error occurred', error);
-  }
-};
-
-const createTrackList = (tracks) => {
-  // Проверяем, определены ли tracks перед вызовом метода map
-  if (tracks) {
-    const trackList = tracks.map((track) => {
-      const trackImage = checkTrackImage(track.image);
-      // const playPause = playTrack(track.audio);
-      // console.log(track.name);
-      return {
-        trackId: track.track_id,
-        album_name: track.album_name,
+    // Преобразуем данные в нужный формат
+    return (
+      data.results.map((track) => ({
+        id: track.id,
         trackName: track.name,
         artistName: track.artist_name,
-        trackImage: trackImage,
-        trackAudio: track.audio, //playTrack,
-        trackTime: track.duration,
-        releaseData: track.releasedate,
-      };
-    });
-    return trackList;
-  } else {
-    console.error('No tracks to create a list from');
+        trackAudio: track.audio,
+        trackImage: track.album_image || track.image,
+        duration: track.duration,
+        releaseData: track.releasedate || '2023-01-01',
+      })) || []
+    );
+  } catch (error) {
+    console.error('Error fetching tracks:', error);
+    return [];
   }
 };
 
-fetchTracks().then((tracks) => {
-  if (tracks) {
-    createTrackList(tracks);
-  } else {
-    console.error('No tracks returned from fetchTracks');
-  }
-});
-
-const checkTrackImage = (trackImage) => {
-  const defaultImage = '/public/images/cover-track/3.jpg';
-  return trackImage ? trackImage : defaultImage;
+export const formatTrackTime = (seconds) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 };
-
-async function formatTrackTime(trackTimeInSeconds) {
-  const hours = Math.floor(trackTimeInSeconds / 3600);
-  const minutes = Math.floor((trackTimeInSeconds % 3600) / 60);
-  const seconds = trackTimeInSeconds % 60;
-
-  let formattedTime = '';
-
-  if (hours > 0) {
-    formattedTime += `${hours}:`;
-  }
-
-  formattedTime += `${minutes.toString().padStart(2, '0')}:${seconds
-    .toString()
-    .padStart(2, '0')}`;
-
-  return formattedTime;
-}
-
-export { createTrackList, fetchTracks };
