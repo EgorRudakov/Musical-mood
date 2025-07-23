@@ -1,113 +1,100 @@
-import { createTrackList, fetchTracks } from './api.js';
+import { fetchTracks, formatTrackTime } from './api.js';
 import data from './data.js';
+import playerState from './playerState.js';
+import { playTrack } from './player.js';
 
-// let trackList;
+// Функция для рендеринга треков
+const renderTracks = (tracks) => {
+  if (!tracks || tracks.length === 0 || !data.audioSliderWrapper) return;
 
-fetchTracks().then((tracks) => {
-  const trackList = createTrackList(tracks);
+  // Сохраняем треки в состоянии плеера
+  playerState.trackList = tracks;
 
-  const trackListHTML = trackList
+  const trackListHTML = tracks
     .map((track, index) => {
+      const trackTime = formatTrackTime(track.duration);
       return `
-						<div class="audio-slider__slide swiper-slide">
-							<div class="audio-slider__item">
-								<div class="audio-slider__info info">
-									<button class="info__button-icon-play button--centered" aria-label='Воспроизвести' data-index="${index}">
-											<img
-												class="info__track-image"
-												src="${track.trackImage}"
-												alt="Track"
-												height="42"
-												width="42"
-											/>
-									</button>
-									<div class="info__performer-title">
-										<h3 class="info__track-name">${track.trackName}</h3>
-										<p class="info__track-artist">${track.artist_id}</p>
-										<span class="info__track-time">${track.trackTime}</span>
-									</div>
-								</div>
-								<div class="audio-slider__actions">
-									<button
-										class="audio-slider__button button-show-similar button--centered"
-									>
-										<svg class="audio-slider__icon icon">
-											<use
-												xlink:href="./src/assets/sprites.svg#show-similar"
-											></use>
-										</svg>
-									</button>
-									<button
-										class="audio-slider__button button-add-to-my-music button--centered"
-									>
-										<svg class="icon__add-to-my-music icon">
-											<use
-												xlink:href="./src/assets/sprites.svg#add-to-my-music"
-											></use>
-										</svg>
-									</button>
-									<div class="audio-slider__menu">
-										<button
-											class="audio-slider__button button-menu button--centered"
-										>
-											<svg class="icon__popular-menu icon">
-												<use
-													xlink:href="./src/assets/sprites.svg#frame"
-												></use>
-											</svg>
-										</button>
-										<ul display="none" class="button-menu__list"></ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						`;
+        <div class="audio-slider__slide swiper-slide">
+          <div class="audio-slider__item">
+            <div class="audio-slider__info info">
+              <button class="info__button-icon-play button--centered" 
+                      aria-label="Воспроизвести ${track.trackName}" 
+                      data-index="${index}">
+                <img class="info__track-image" 
+                     src="${track.trackImage}" 
+                     alt="${track.trackName}" 
+                     height="42" 
+                     width="42" />
+              </button>
+              <div class="info__performer-title">
+                <h3 class="info__track-name">${track.trackName}</h3>
+                <p class="info__track-artist">${track.artistName}</p>
+                <span class="info__track-time">${trackTime}</span>
+              </div>
+            </div>
+            <div class="audio-slider__actions">
+              <button class="audio-slider__button button-show-similar button--centered">
+                <svg class="audio-slider__icon icon">
+                  <use xlink:href="./src/assets/sprites.svg#show-similar"></use>
+                </svg>
+              </button>
+              <button class="audio-slider__button button-add-to-my-music button--centered">
+                <svg class="icon__add-to-my-music icon">
+                  <use xlink:href="./src/assets/sprites.svg#add-to-my-music"></use>
+                </svg>
+              </button>
+              <div class="audio-slider__menu">
+                <button class="audio-slider__button button-menu button--centered">
+                  <svg class="icon__popular-menu icon">
+                    <use xlink:href="./src/assets/sprites.svg#frame"></use>
+                  </svg>
+                </button>
+                <ul display="none" class="button-menu__list"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
     })
     .join('');
+
   data.audioSliderWrapper.innerHTML = trackListHTML;
 
-  let audio = new Audio();
-  let isPlaying = false;
+  // Добавляем обработчики событий для кнопок воспроизведения
+  addTrackEventListeners();
+};
 
-  function ButtonPlayPausePlyer() {}
-
-  function togglePlayPauseIcon(isPlaying) {
-    // const controlsButton = document.getElementById('button-play-pause');
-    // const iconPlay = controlsButton.querySelector('.icon__play');
-    // const iconPause = controlsButton.querySelector('.icon__pause');
-    if (isPlaying) {
-      data.iconPlay.style.display = 'none';
-      data.iconPause.style.display = 'block';
-    } else {
-      data.iconPlay.style.display = 'block';
-      data.iconPause.style.display = 'none';
-    }
-  }
-
-  // Получаем все кнопки и добавляем обработчики событий
-
+// Добавление обработчиков событий для треков
+const addTrackEventListeners = () => {
   const playButtons = document.querySelectorAll('.info__button-icon-play');
 
   playButtons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      const index = event.currentTarget.dataset.index;
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-      if (trackList[index] && trackList[index].trackAudio) {
-        const audio = new Audio(trackList[index].trackAudio);
-        createAudioPlayer(audio);
+      const index = parseInt(e.currentTarget.dataset.index);
+      const track = playerState.trackList[index];
+
+      if (track) {
+        playTrack(track, index);
       }
     });
-
-    function createAudioPlayer(audioSrc) {
-      if (!isPlaying) {
-        audio = audioSrc;
-        audio.play();
-        isPlaying = true;
-      } else {
-        audio.pause();
-        isPlaying = false;
-      }
-      togglePlayPauseIcon(isPlaying);
-    }
   });
-});
+};
+
+// Инициализация загрузки треков
+export const initPopularTracks = async () => {
+  try {
+    const tracks = await fetchTracks();
+
+    if (tracks && tracks.length > 0) {
+      renderTracks(tracks);
+      console.log('Треки загружены:', tracks.length);
+    } else {
+      console.warn('Треки не найдены');
+    }
+  } catch (error) {
+    console.error('Ошибка загрузки треков:', error);
+  }
+};
