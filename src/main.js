@@ -1,16 +1,24 @@
-// Swiper
 import './js/swiper.js';
-
-// Scss
 import './scss/main.scss';
+import { initControls } from './js/controls.js';
+import { initPopularTracks } from './js/popular-tracks.js';
 
-// Js
-import './js/api.js';
-import './js/data.js';
-import './js/player.js';
-import './js/player_control.js';
-import './js/player_slider.js';
-import './js/popular-tracks.js';
-import './js/volume_slider.js';
+// Инициализация приложения
+const initApp = () => {
+  console.log('Инициализация музыкального плеера...');
 
-import.meta.glob('./assets/*.{gif,jpeg,jpg,png,svg}');
+  // Инициализируем элементы управления
+  initControls();
+
+  // Загружаем популярные треки
+  initPopularTracks();
+
+  console.log('Плеер инициализирован');
+};
+
+// Запуск приложения после загрузки DOM
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
